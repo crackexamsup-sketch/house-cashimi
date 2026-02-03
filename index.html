@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Cashimi | 카시미 백작가</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+KR:wght@200;400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Nanum Myeongjo"', 'serif'],
+              display: ['"Playfair Display"', 'serif'],
+              kr: ['"Noto Serif KR"', 'serif'],
+            },
+            colors: {
+              gold: {
+                100: '#FBF5D4',
+                200: '#F3E5AB',
+                300: '#E6C288',
+                400: '#D4AF37', // Metallic Gold
+                500: '#C5A028',
+                600: '#AA8820',
+                700: '#806015',
+                900: '#423005',
+              },
+              'lin-purple': '#2e1a47',
+              'ran-blue': '#1a233a',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Nanum Myeongjo', serif;
+        background-color: #050505;
+        color: #e5e5e5;
+        overflow-x: hidden;
+      }
+      
+      /* Grain Texture Overlay */
+      .bg-grain::before {
+        content: "";
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.04;
+        mix-blend-mode: overlay;
+        animation: grain 8s steps(10) infinite;
+      }
+
+      @keyframes grain {
+        0%, 100% { transform:translate(0,0) }
+        10% { transform:translate(-5%,-10%) }
+        20% { transform:translate(-15%,5%) }
+        30% { transform:translate(7%,-25%) }
+        40% { transform:translate(-5%,25%) }
+        50% { transform:translate(-15%,10%) }
+        60% { transform:translate(15%,0%) }
+        70% { transform:translate(0%,15%) }
+        80% { transform:translate(3%,35%) }
+        90% { transform:translate(-10%,10%) }
+      }
+
+      /* Typography Utils */
+      .writing-vertical {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+      }
+      
+      .text-glow {
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "firebase/": "https://esm.sh/firebase@^12.8.0/",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+  <body class="bg-grain">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
